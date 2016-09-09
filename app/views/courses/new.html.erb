@@ -1,0 +1,30 @@
+<!--
+<div class="study-submit">
+  <%= form_tag('/tweets', method: :post) do %>
+    <h3>
+      勉強に関する悩みを投稿する
+    </h3>
+    <input placeholder="悩み・相談の概要" type="text" name="title">
+    </br>
+    <textarea cols="30" name="text" placeholder="悩み・相談内容" rows="10"></textarea>
+    <input type="submit" value="投稿する">
+  <% end %>
+</div>
+-->
+
+<div class="container">
+<%= form_tag('/courses', method: :post) do %>
+  <h3 style="color:green;"><strong>進路に関する相談をする</strong></h3>
+    <form>
+        <div class="form-group">
+            <label style="margin-top:15px;">相談の概要</label>
+            <input type="text" name="title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>相談の内容</label>
+            <textarea name="content" class="form-control" rows="10"></textarea>
+        </div>
+        <button type="submit", class="study-submit">投稿する</button>
+    </form>
+<% end %>
+</div>

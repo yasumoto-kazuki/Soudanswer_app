@@ -1,0 +1,84 @@
+<div class="study-post">
+    <div class="note-study clearfix">
+      <h4 style="font-size:18px;"><strong><%= @gender.title %>️</strong>️</h4>
+      <p><%= simple_format(@gender.content) %></p>
+    <div class="study-poster">
+      <strong>
+      投稿者：<%= @gender.user.nickname %> /
+      <% if @gender.user.gender == 1%>
+      男 /
+      <% else %>
+      女 /
+      <% end %>
+      <% if @gender.user.grade == 1 %>
+      中１
+      <% elsif @gender.user.grade == 2 %>
+      中２
+      <% elsif @gender.user.grade == 3 %>
+      中３
+      <% elsif @gender.user.grade == 4 %>
+      高１
+      <% elsif @gender.user.grade == 5 %>
+      高２
+      <% elsif @gender.user.grade == 6 %>
+      高３
+      <% elsif @gender.user.grade == 7 %>
+      浪人
+      <% end %>
+      </strong>
+    </div>
+    <% if user_signed_in? && current_user.id == @gender.user_id %>
+
+      <%= link_to "削除", "/genders/#{@gender.id}", method: :delete, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <%= link_to "編集", "/genders/#{@gender.id}/edit", method: :get, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <% end %>
+  </div>
+  <!-- ここからコメントフォーム-->
+  <div class="commnets">
+  <div style="text-align:center;">
+   <% if current_user %>
+      <%= form_tag("/genders/#{@gender.id}/gender_comments", method: :post) do %>
+        <textarea cols="30" name="text" placeholder="この相談に対する意見・コメントを記入しよう！" rows="8" class="comments-table" style="max-width:720px;"></textarea><br />
+        <input type="submit" class="course-submit-comments" value="コメントを投稿する">
+      <% end %>
+   <% end %>
+ </div>
+
+<div class="comment-index">
+<h3 style="color:green;text-align:center;">【相談の回答】</h3>
+      <% if @gender_comments %>
+        <% @gender_comments.each do |gender_comment| %>
+          <p style="margin-top:20px;font-size:16px;">
+            <strong><% if gender_comment.user.email == "administrator@gmail.com" %>
+         <span style="color:#c10200;">●運営者</span> /
+         <% end %>●<%= gender_comment.user.nickname %> / <% if gender_comment.user.gender == 1 %>
+      男 /
+      <% elsif gender_comment.user.gender == 2 %>
+      女 /
+      <% end %>
+      <% if gender_comment.user.grade == 1 %>
+      中１
+      <% elsif gender_comment.user.grade == 2 %>
+      中２
+      <% elsif gender_comment.user.grade == 3 && gender_comment.user.email == "administrator@gmail.com" %>
+      早稲田大学
+      <% elsif gender_comment.user.grade == 3 %>
+      中３
+      <% elsif gender_comment.user.grade == 4 %>
+      高１
+      <% elsif gender_comment.user.grade == 5 %>
+      高２
+      <% elsif gender_comment.user.grade == 6 %>
+      高３
+      <% elsif gender_comment.user.grade == 7 %>
+      浪人
+      <% end %></strong>
+          </p>
+          <p><%= simple_format(gender_comment.text) %></p>
+        <% end %>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>

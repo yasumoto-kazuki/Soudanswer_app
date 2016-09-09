@@ -1,0 +1,46 @@
+
+<h2 style="color:green;text-align:center;">恋愛・性相談</h2>
+<div class="study-post">
+  <% @genders.each do |gender| %>
+    <div class="note-study clearfix">
+      <h4 style="font-size:18px;"><strong><%= gender.title %></strong>️</h4>
+    <p><%= simple_format(gender.content, :style => "font-size:16px;") %></p>
+    <div class="study-poster">
+    <strong>
+      投稿者：<%= gender.user.nickname %> /
+      <% if gender.user.gender == 1 %>
+      男 /
+      <% elsif gender.user.gender == 2 %>
+      女 /
+      <% end %>
+      <% if gender.user.grade == 1 %>
+      中１
+      <% elsif gender.user.grade == 2 %>
+      中２
+      <% elsif gender.user.grade == 3 %>
+      中３
+      <% elsif gender.user.grade == 4 %>
+      高１
+      <% elsif gender.user.grade == 5 %>
+      高２
+      <% elsif gender.user.grade == 6 %>
+      高３
+      <% elsif gender.user.grade == 7 %>
+      浪人
+      <% end %>
+    </strong>
+    </div>
+
+    <%= link_to "詳細", "/genders/#{gender.id}", method: :get, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;" %>
+
+
+    <% if user_signed_in? && current_user.id == gender.user_id %>
+    <%= link_to "編集", "/genders/#{gender.id}/edit", method: :get, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <%= link_to "削除", "/genders/#{gender.id}", method: :delete, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <% end %>
+  </div>
+  <% end %>
+  <div style="text-align:center;">
+  <%= paginate(@genders) %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<p><%= @email %>様</p>
+
+<h3>メールアドレス認証のお願い</h3>
+
+<p>Soudanswerの会員登録はまだ完了していません。<br>以下のリンクにアクセスして会員登録を完了させてください。</p>
+
+<p>※このメールに心当たりがない場合は、このメールを破棄してください。</p>
+
+<p><%= link_to 'メールアドレスを認証する', confirmation_url(@resource, confirmation_token: @token) %></p>

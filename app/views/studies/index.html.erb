@@ -1,0 +1,47 @@
+
+<h2 style="color:green;text-align:center;">勉強相談</h2>
+<div class="study-post">
+  <% @studies.each do |study| %>
+    <div class="note-study clearfix">
+      <h4 style="font-size:18px;"><strong><%= study.title %></strong>️</h4>
+    <p><%= simple_format(study.content, :style => "font-size:16px;") %></p>
+    <div class="study-poster">
+    <strong>
+      投稿者：<%= study.user.nickname %> /
+      <% if study.user.gender == 1 %>
+      男 /
+      <% elsif study.user.gender == 2 %>
+      女 /
+      <% end %>
+      <% if study.user.grade == 1 %>
+      中１
+      <% elsif study.user.grade == 2 %>
+      中２
+      <% elsif study.user.grade == 3 %>
+      中３
+      <% elsif study.user.grade == 4 %>
+      高１
+      <% elsif study.user.grade == 5 %>
+      高２
+      <% elsif study.user.grade == 6 %>
+      高３
+      <% elsif study.user.grade == 7 %>
+      浪人
+      <% end %>
+    </strong>
+    </div>
+
+    <%= link_to "詳細", "/studies/#{study.id}", method: :get, :class => "btn btn-success btn-xs pull-right", :style => "margin-top:10px;color:white;" %>
+
+    <% if user_signed_in? && current_user.id == study.user_id %>
+    <%= link_to "編集", "/studies/#{study.id}/edit", method: :get, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <%= link_to "削除", "/studies/#{study.id}", method: :delete, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+     <!-- <button type="button" class="btn btn-warning btn-xs pull-right" style="margin-top:10px;margin-right:10px;"><%= link_to "削除", "/studies/#{study.id}", method: :delete, :style => "color:white;" %></button>
+      <button type="button" class="btn btn-warning btn-xs pull-right" style="margin-top:10px;margin-right:10px;"><%= link_to "編集", "/studies/#{study.id}/edit", method: :get, :style => "color:white;" %></button>-->
+    <% end %>
+  </div>
+  <% end %>
+  <div style="text-align:center;">
+  <%= paginate(@studies) %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+module DeviseViewHelper
+end

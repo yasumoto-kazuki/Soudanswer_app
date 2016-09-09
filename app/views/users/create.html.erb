@@ -1,0 +1,15 @@
+<div class="study-post">
+  <h2 style="text-align:center;color:green;"><%= @nickname %>さんの恋愛・性相談一覧</h2>
+  <% @genders.each do |gender| %>
+    <div class="note-study clearfix">
+     <h4><strong><%= gender.title %></strong>️</h4>
+     <p><%= simple_format(gender.content) %></p>
+    <% if user_signed_in? && current_user.id == gender.user_id %>
+      <button type="button" class="btn btn-success btn-xs pull-right" style="margin-top:10px;"><%= link_to "削除", "/genders/#{gender.id}", method: :delete, :style => "color:white;text-decoration: none;" %></button>
+      <button type="button" class="btn btn-success btn-xs pull-right" style="margin-top:10px;margin-right:10px;"><%= link_to "編集", "/genders/#{gender.id}/edit", method: :get, :style => "color:white;text-decoration: none;" %></button>
+    <% end %>
+
+   </div>
+  <% end %>
+  <%= paginate(@genders) %>
+</div>

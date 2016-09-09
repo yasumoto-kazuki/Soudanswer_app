@@ -1,0 +1,32 @@
+<div style="position: relative;">
+
+
+<%= image_tag("机.jpg", :class => "img-responsive top-img1") %>
+
+
+  <h2 class="rundown"><strong>勉強・進路・恋愛/性の相談受付中！</strong></h2>
+  <p class="rundown-sentence">東大・早慶の現役大学生と全国のユーザーが、あなたの悩みを解決します。</p>
+
+  <% if user_signed_in? %>
+    <%= link_to "相談する", "/select", method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"post-button btn-top" %>
+    <%= link_to "マイページ", "/users/#{current_user.id}", method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"login-button btn-top" %>
+  <% elsif %>
+  <%= link_to "新規登録", new_user_registration_path, method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"post-button btn-top" %>
+  <%= link_to "ログイン", new_user_session_path, method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"login-button btn-top" %>
+  <% end %>
+
+
+
+  <!--<%= link_to "ログイン", new_user_session_path, method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"login-button btn-top" %>-->
+
+  </div>
+
+
+<div class="row">
+<!-- 画像を縮小するで500pxで切り取り-->
+<div><%= image_tag("home-image.jpg", :class => "img-responsive home_img") %></div>
+ <div><%= image_tag("s_top-image-1.jpg", :class => "img-responsive home_img") %></div>
+ <div><%= image_tag("s_top-image-2.jpg", :class => "img-responsive home_img") %></div>
+ <div><%= image_tag("s_top-image-3.jpg", :class => "img-responsive home_img") %></div>
+ <div><%= image_tag("s_top-image-4.jpg", :class => "img-responsive home_img") %></div>
+</div>

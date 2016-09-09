@@ -1,0 +1,57 @@
+
+<div class="container" style="text-align:center;">
+<h2 style="color:green;">新規登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+  <%= f.label :性別 %><br />
+    <%= f.radio_button :gender, 1 %> 男　
+    <%= f.radio_button :gender, 2 %> 女<br />
+  </div>
+
+  <div class="field">
+  <%= f.label :学年 %><br />
+    <%= f.radio_button :grade, 1 %> 中１ 　<%= f.radio_button :grade, 2 %> 中２ 　<%= f.radio_button :grade, 3 %> 中３<br />
+    <%= f.radio_button :grade, 4 %> 高１ 　<%= f.radio_button :grade, 5 %> 高２ 　<%= f.radio_button :grade, 6 %> 高３　<%= f.radio_button :grade, 7 %>浪人<br />
+  </div>
+
+  <div class="field">
+    <%= f.label :ニックネーム %><br />
+        <%= f.text_field :nickname, :placeholder => "ニックネームを入力" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, :placeholder => "メールアドレスを入力" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード：６文字以上 %>
+    <% if @minimum_password_length %>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", :placeholder => "６文字以上" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワードの再入力 %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "パスワードを再入力" %>
+  </div>
+
+
+  <h4 style="font-weight:bold;color:#c10200;margin-top:30px;">※登録後、認証メールが送られます。<br>認証メールを確認後、ログイン可能になります。</h4>
+
+
+<div class="form-group">
+<div class="col-sm-offset-4 col-sm-8">
+    <%= f.submit "上記の内容で新規登録する", :class => "register-button", :style =>"align:center;margin-left:23px;"  %>
+  </div>
+  </div>
+
+
+
+<% end %>
+
+<%= render "devise/shared/links" %>
+  </div>

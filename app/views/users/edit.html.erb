@@ -1,0 +1,15 @@
+<div class="study-post">
+  <h2 style="text-align:center;color:green;"><%= @nickname %>さんの勉強相談一覧</h2>
+  <% @studies.each do |study| %>
+    <div class="note-study clearfix">
+     <h4><strong><%= study.title %></strong>️</h4>
+     <p><%= simple_format(study.content) %></p>
+    <% if user_signed_in? && current_user.id == study.user_id %>
+      <button type="button" class="btn btn-success btn-xs pull-right" style="margin-top:10px;"><%= link_to "削除", "/studies/#{study.id}", method: :delete, :style => "color:white;text-decoration: none;" %></button>
+      <button type="button" class="btn btn-success btn-xs pull-right" style="margin-top:10px;margin-right:10px;"><%= link_to "編集", "/studies/#{study.id}/edit", method: :get, :style => "color:white;text-decoration: none;" %></button>
+    <% end %>
+
+   </div>
+  <% end %>
+  <%= paginate(@studies) %>
+</div>

@@ -1,0 +1,84 @@
+<div class="study-post">
+    <div class="note-study clearfix">
+      <h4 style="font-size:18px;"><strong><%= @course.title %>️</strong>️</h4>
+      <p><%= simple_format(@course.content, :style => "font-size:16px;") %></p>
+    <div class="study-poster">
+      <strong>
+      投稿者：<%= @course.user.nickname %> /
+      <% if @course.user.gender == 1%>
+      男 /
+      <% else %>
+      女 /
+      <% end %>
+      <% if @course.user.grade == 1 %>
+      中１
+      <% elsif @course.user.grade == 2 %>
+      中２
+      <% elsif @course.user.grade == 3 %>
+      中３
+      <% elsif @course.user.grade == 4 %>
+      高１
+      <% elsif @course.user.grade == 5 %>
+      高２
+      <% elsif @course.user.grade == 6 %>
+      高３
+      <% elsif @course.user.grade == 7 %>
+      浪人
+      <% end %>
+      </strong>
+    </div>
+    <% if user_signed_in? && current_user.id == @course.user_id %>
+
+      <%= link_to "削除", "/courses/#{@course.id}", method: :delete, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <%= link_to "編集", "/courses/#{@course.id}/edit", method: :get, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <% end %>
+  </div>
+  <!-- ここからコメントフォーム-->
+  <div class="commnets">
+  <div style="text-align:center;">
+   <% if current_user %>
+      <%= form_tag("/courses/#{@course.id}/course_comments", method: :post) do %>
+        <textarea cols="30" name="text" placeholder="この相談に対する意見・コメントを記入しよう！" rows="8" class="comments-table" style="max-width:720px"></textarea><br />
+        <input type="submit" class="course-submit-comments" value="コメントを投稿する">
+      <% end %>
+   <% end %>
+ </div>
+
+<div class="comment-index">
+<h3 style="color:green;text-align:center;">【相談の回答】</h3>
+      <% if @course_comments %>
+        <% @course_comments.each do |course_comment| %>
+          <p style="margin-top:20px;font-size:16px;">
+            <strong><% if course_comment.user.email == "administrator@gmail.com" %>
+         <span style="color:#c10200;">●運営者</span> /
+         <% end %>●<%= course_comment.user.nickname %> / <% if course_comment.user.gender == 1 %>
+      男 /
+      <% elsif course_comment.user.gender == 2 %>
+      女 /
+      <% end %>
+      <% if course_comment.user.grade == 1 %>
+      中１
+      <% elsif course_comment.user.grade == 2 %>
+      中２
+      <% elsif course_comment.user.grade == 3 && course_comment.user.email == "administrator@gmail.com" %>
+      早稲田大学
+      <% elsif course_comment.user.grade == 3 %>
+      中３
+      <% elsif course_comment.user.grade == 4 %>
+      高１
+      <% elsif course_comment.user.grade == 5 %>
+      高２
+      <% elsif course_comment.user.grade == 6 %>
+      高３
+      <% elsif course_comment.user.grade == 7 %>
+      浪人
+      <% end %></strong>
+          </p>
+          <p><%= simple_format(course_comment.text) %></p>
+        <% end %>
+      <% end %>
+
+
+    </div>
+  </div>
+</div>

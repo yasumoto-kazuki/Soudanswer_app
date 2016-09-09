@@ -1,0 +1,49 @@
+
+<h2 style="color:green;text-align:center;">進路相談</h2>
+<div class="study-post">
+  <% @courses.each do |course| %>
+    <div class="note-study clearfix">
+    <h4 style="font-size:18px;"><strong><%= course.title %></strong>️</h4>
+    <p><%= simple_format(course.content, :style => "font-size:16px;") %></p>
+    <div class="study-poster">
+    <strong>
+      投稿者：<%= course.user.nickname %> /
+      <% if course.user.gender == 1 %>
+      男 /
+      <% elsif course.user.gender == 2 %>
+      女 /
+      <% end %>
+      <% if course.user.grade == 1 %>
+      中１
+      <% elsif course.user.grade == 2 %>
+      中２
+      <% elsif course.user.grade == 3 %>
+      中３
+      <% elsif course.user.grade == 4 %>
+      高１
+      <% elsif course.user.grade == 5 %>
+      高２
+      <% elsif course.user.grade == 6 %>
+      高３
+      <% elsif course.user.grade == 7 %>
+      浪人
+      <% end %>
+    </strong>
+    </div>
+
+    <%= link_to "詳細", "/courses/#{course.id}", method: :get, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;" %>
+
+
+
+
+
+    <% if user_signed_in? && current_user.id == course.user_id %>
+    <%= link_to "編集", "/courses/#{course.id}/edit", method: :get, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <%= link_to "削除", "/courses/#{course.id}", method: :delete, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
+    <% end %>
+  </div>
+  <% end %>
+  <div style="text-align:center;">
+  <%= paginate(@courses) %>
+  </div>
+</div>
