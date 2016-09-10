@@ -8,7 +8,7 @@ html{
 
 body{
 overflow-x: hidden;
-min-width:400px;
+min-width:0;
 }
 
 .navbar-brand{
