@@ -2,6 +2,10 @@ html, body{
   height: 100%;
 }
 
+body{
+overflow-x: hidden;
+}
+
 .navbar-brand{
 margin-bottom: 15px;
 }
@@ -165,10 +169,10 @@ height: 450px;
   color: green;
 }
 
-
+/*
 .select-sentence{
   position: absolute;
-  top:70px;
+  top:90px;
   left: 0;
   right: 0;
   bottom: 0px;
@@ -176,16 +180,15 @@ height: 450px;
   text-align: center;
   color: green;
 }
+*/
 
 .select-study-button{
   position: absolute;
-  top:110px;
+  top:80px;
   left: 0px;
   right: 0;
   bottom: 0px;
   margin:auto;
-  width:180px;
-  height:55px;
   color: white;
 }
 
