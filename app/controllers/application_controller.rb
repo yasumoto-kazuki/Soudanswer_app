@@ -11,15 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    "http://localhost:3000/after/log-in"
+    "/after/log-in"
   end
 
-  def after_sign_up_path_for
-    "/after/register"
-  end
 
   def after_sign_out_path_for(resource)
-    "http://localhost:3000/after/log-out"
+    "/after/log-out"
   end
 
 
