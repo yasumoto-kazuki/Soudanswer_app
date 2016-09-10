@@ -47,14 +47,12 @@
 <%= yield %>
   </div>
 
-<footer class="footer">
-  <div class="container">
+<footer class="footer container">
     <h4 class="footer-heading">Soudanswerとは？</h4>
     <p class="footer-sentence" style="text-decoration:underline; color:#fff100;"><strong><span style="color:green;">Soudanswerとは、東大・早慶の現役大学生や全国の同級生に、勉強・進路・恋愛/性の相談ができるサービスです。</span></strong></p>
     <% if user_signed_in? %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :style => "color:green;font-weight:bold;font-size:18px;" %>
     <% end %>
-  </div>
 </footer>
   </div>
 </body>
