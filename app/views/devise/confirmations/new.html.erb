@@ -12,11 +12,7 @@
     <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), :placeholder => "メールアドレスを入力" %>
   </div>
 
-  <div class="form-group">
-<div class="col-sm-offset-4 col-sm-8">
-    <%= f.submit "送信", :class => "actions", :style =>"align:center;margin-left:72px;" %>
-  </div>
-  </div>
+    <%= f.submit "送信", :class => "actions center-block" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
