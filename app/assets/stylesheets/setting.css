@@ -1,5 +1,5 @@
 html, body{
-  height: 200%;
+  height: 100%;
 }
 
 html{
@@ -22,6 +22,12 @@ margin-bottom: 15px;
 
 .navbar-toggle{
   margin-top: 13px;
+}
+
+.myself{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
 }
 
 
@@ -175,10 +181,10 @@ height: 450px;
   color: green;
 }
 
-/*
+
 .select-sentence{
   position: absolute;
-  top:90px;
+  top:20px;
   left: 0;
   right: 0;
   bottom: 0px;
@@ -186,11 +192,11 @@ height: 450px;
   text-align: center;
   color: green;
 }
-*/
+
 
 .select-study-button{
   position: absolute;
-  top:80px;
+  top:50px;
   left: 0px;
   right: 0;
   bottom: 0px;
@@ -217,11 +223,12 @@ height: 450px;
   left: 0px;
   right: 0;
   bottom: 0px;
-  margin:auto;
+  margin:0 auto;
   width:180px;
   height:55px;
   color: white;
 }
+
 
 
 .btn-top{
