@@ -26,15 +26,4 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-
-  #get "studies" => "studies#index"
-  #get "studies/new" => "studies#new"
-  #post "studies" => "studies#create"
-  #get "users/:id" => "users#show"
-  #delete "studies/:id" => "studies#destroy"
-  #get "studies/:id/edit" => "studies#edit"
-  #patch "studies/:id" => "studies#update"
-  #get "studies/:id" => "studies#show"
-
-
 end

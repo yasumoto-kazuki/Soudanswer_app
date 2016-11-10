@@ -1,7 +1,6 @@
 class GendersController < ApplicationController
 
   before_action :move_to_home, except: [:index, :show]
-  #showアクションにもexceptを適用する必要あり！
 
   def index
     @genders = Gender.includes(:user).page(params[:page]).per(5).order("created_at DESC")

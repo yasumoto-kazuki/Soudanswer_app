@@ -29,8 +29,6 @@
     </div>
     <% if user_signed_in? && current_user.id == @study.user_id %>
 
-
-
       <%= link_to "削除", "/studies/#{@study.id}", method: :delete, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
       <%= link_to "編集", "/studies/#{@study.id}/edit", method: :get, :class => "btn btn-success pull-right btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
     <% end %>
@@ -78,14 +76,10 @@
       <% elsif comment.user.grade == 7 %>
       浪人
       <% end %>
-        
       </strong></p>
           <p><%= simple_format(comment.text, :style => "font-size:16px;") %></p>
         <% end %>
       <% end %>
-
-
-
   </div>
+ </div>
 </div>
-  </div>

@@ -1,12 +1,7 @@
 <div style="position: relative;">
-
-
-<%= image_tag("机.jpg", :class => "img-responsive top-img1") %>
-
-
+ <%= image_tag("机.jpg", :class => "img-responsive top-img1") %>
   <h2 class="rundown"><strong>勉強・進路・恋愛/性の相談受付中！</strong></h2>
   <p class="rundown-sentence">東大・早慶の現役大学生と全国のユーザーが、あなたの悩みを解決します。</p>
-
   <% if user_signed_in? %>
     <%= link_to "相談する", "/select", method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"post-button btn-top" %>
     <%= link_to "マイページ", "/users/#{current_user.id}", method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"login-button btn-top" %>
@@ -14,22 +9,10 @@
   <%= link_to "新規登録", new_user_registration_path, method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"post-button btn-top" %>
   <%= link_to "ログイン", new_user_session_path, method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"login-button btn-top" %>
   <% end %>
+</div>
 
-
-
-  <!--<%= link_to "ログイン", new_user_session_path, method: :get, :style => "color:#fffccc;text-decoration: none;", :class =>"login-button btn-top" %>-->
-
-  </div>
-
-
-
-<!-- 画像を縮小するで500pxで切り取り-->
-<div><%= image_tag("home-image.jpg", :class => "img-responsive home_img") %></div>
+ <div><%= image_tag("home-image.jpg", :class => "img-responsive home_img") %></div>
  <div><%= image_tag("s_top-image-1.jpg", :class => "img-responsive home_img") %></div>
  <div><%= image_tag("s_top-image-2.jpg", :class => "img-responsive home_img") %></div>
  <div><%= image_tag("s_top-image-3.jpg", :class => "img-responsive home_img") %></div>
- <!--
- <p style="text-align:center;padding-right: 10px;padding-left: 10px;color:#c10200;">※現在、大学生が回答できる相談内容は、数学・英語・早稲田大学に関する進路相談の３つとなっております。<br>
-   他の相談内容に関しては、ただいま回答者を募集中です。もうしばらくお待ち下さい。</p>
-   -->
  <div><%= image_tag("s_top-image-4.jpg", :class => "img-responsive home_img") %></div>

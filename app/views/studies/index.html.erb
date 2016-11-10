@@ -1,19 +1,4 @@
-
 <h2 style="color:green;text-align:center;">勉強相談</h2>
-
-<!--
-<%= image_tag("myself.png", :class => "img-responsive", :style => "width:100px;height:100px;margin:0 auto;") %>
--->
-
-<!--
-<img src="<%= asset_path "myself.png" %>" class="myself img-responsive" />
-
-<div style="text-align:center;color:green;padding-right:10px;padding-left:10px;">
-<p>回答者：安元一耀</p>
-<p>所属：早稲田大学商学部３年</p>
-<p>数学・英語に関する相談に回答します！数学は高校の定期テストで学年１位を取ったこともあり、得意科目です。<br>大学１年生の時に、塾のアルバイトで数学と英語を担当していました。</p>
-</div>-->
-
 
 <div class="study-post">
   <% @studies.each do |study| %>
@@ -51,8 +36,6 @@
     <% if user_signed_in? && current_user.id == study.user_id %>
     <%= link_to "編集", "/studies/#{study.id}/edit", method: :get, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
     <%= link_to "削除", "/studies/#{study.id}", method: :delete, :class => "btn btn-success btn-xs", :style => "margin-top:10px;color:white;margin-right:10px;" %>
-     <!-- <button type="button" class="btn btn-warning btn-xs pull-right" style="margin-top:10px;margin-right:10px;"><%= link_to "削除", "/studies/#{study.id}", method: :delete, :style => "color:white;" %></button>
-      <button type="button" class="btn btn-warning btn-xs pull-right" style="margin-top:10px;margin-right:10px;"><%= link_to "編集", "/studies/#{study.id}/edit", method: :get, :style => "color:white;" %></button>-->
     <% end %>
   </div>
   <% end %>
